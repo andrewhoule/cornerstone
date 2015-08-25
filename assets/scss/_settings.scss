@@ -1,0 +1,291 @@
+
+/* ==========================================================================
+  Variables
+   ========================================================================== */ 
+
+/* Colors */
+
+$primarycolor: #4f2683;
+$primarycolor_dark: darken($primarycolor, 6%);
+$primarycolor_meddark: darken($primarycolor, 15%);
+$primarycolor_verydark: darken($primarycolor, 30%);
+$primarycolor_light: lighten($primarycolor, 10%);
+$primarycolor_medlight: lighten($primarycolor, 20%);
+$primarycolor_verylight: lighten($primarycolor, 40%);
+$secondarycolor: #f68e1d;
+$secondarycolor_dark: darken($secondarycolor, 6%);
+$secondarycolor_meddark: darken($secondarycolor, 15%);
+$secondarycolor_verydark: darken($secondarycolor, 30%);
+$secondarycolor_light: lighten($secondarycolor, 10%);
+$secondarycolor_medlight: lighten($secondarycolor, 20%);
+$secondarycolor_verylight: lighten($secondarycolor, 40%);
+$textcolor: #686868;
+$textcolor_strong: darken($textcolor, 10%);
+$textcolor_medstrong: darken($textcolor, 20%);
+$textcolor_verystrong: darken($textcolor, 30%);
+$textcolor_subtle: lighten($textcolor, 10%);
+$textcolor_medsubtle: lighten($textcolor, 25%);
+$textcolor_verysubtle: lighten($textcolor, 40%);
+$textcolor_reversed: #eee;
+$textcolor_reversed_strong: lighten($textcolor_reversed, 10%);
+$textcolor_reversed_medstrong: lighten($textcolor_reversed, 20%);
+$textcolor_reversed_verystrong: lighten($textcolor_reversed, 30%);
+$textcolor_reversed_subtle: darken($textcolor_reversed, 10%);
+$textcolor_reversed_medsubtle: darken($textcolor_reversed, 25%);
+$textcolor_reversed_verysubtle: darken($textcolor_reversed, 40%);
+$offsetcolor: #cccccc;
+$offsetcolor_subtle: lighten($offsetcolor, 5%);
+$offsetcolor_medsubtle: lighten($offsetcolor, 10%);
+$offsetcolor_verysubtle: lighten($offsetcolor, 20%);
+$offsetcolor_strong: darken($offsetcolor, 10%);
+$offsetcolor_medstrong: darken($offsetcolor, 20%);
+$offsetcolor_verystrong: darken($offsetcolor, 30%);
+$darkcolor: #222222;
+$darkcolor_light: lighten($darkcolor, 10%);
+$darkcolor_medlight: lighten($darkcolor, 20%);
+$darkcolor_verylight: lighten($darkcolor, 30%);
+$darkcolor_dark: darken($darkcolor, 10%);
+$darkcolor_meddark: darken($darkcolor, 20%);
+$darkcolor_verydark: darken($darkcolor, 30%);
+$alertcolor: #c40000;
+$alertcolor_dark: darken($alertcolor, 10%);
+$alertcolor_meddark: darken($alertcolor, 20%);
+$alertcolor_verydark: darken($alertcolor, 30%);
+$alertcolor_light: lighten($alertcolor, 20%);
+$alertcolor_medlight: lighten($alertcolor, 35%);
+$alertcolor_verylight: lighten($alertcolor, 55%);
+$successcolor: #00b548;
+$successcolor_dark: darken($successcolor, 10%);
+$successcolor_meddark: darken($successcolor, 20%);
+$successcolor_verydark: darken($successcolor, 30%);
+$successcolor_light: lighten($successcolor, 20%);
+$successcolor_medlight: lighten($successcolor, 35%);
+$successcolor_verylight: lighten($successcolor, 55%);
+
+/* Functionality / Structure */
+
+$transitionduration: .4s;
+$borderradius: 0.1875rem;
+$spacing: 5%;
+$spacing-xs: $spacing * .5;
+$spacing-sm: $spacing * .75;
+$spacing-lg: $spacing * 2;
+$spacing-xl: $spacing * 3;
+$spacing-fixed: 30px;
+$spacing-fixed-xs: $spacing-fixed * .4;
+$spacing-fixed-sm: $spacing-fixed * .7;
+$spacing-fixed-lg: $spacing-fixed * 1.5;
+$spacing-fixed-xl: $spacing-fixed * 2.0;
+$maxwidth: 1200px;
+$maxwidth-xs: $maxwidth * .4;
+$maxwidth-sm: $maxwidth * .8;
+$maxwidth-lg: $maxwidth * 1.2;
+$maxwidth-xl: $maxwidth * 1.4;
+
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */ 
+
+@mixin rem($property, $values) {
+  $font-size: $base-font-size;
+  $px-values: ();
+  $rem-values: ();
+  @each $value in $values {
+    @if $value == 0 or $value == 0px {
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      $new-rem-value: $value / $font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == "%") {
+      $px-values: join($px-values, #{$value});
+      $rem-values: join($rem-values, #{$value});
+    } @else if $value == auto {
+      $px-values: join($px-values, auto);
+      $rem-values: join($rem-values, auto);
+    } @else {
+      $px-values: join($px-values, round($value * $font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
+@mixin rgba($type, $color, $percentage) {
+  @if $type == color {
+    color: transd($color, $percentage);
+    color: rgba($color, $percentage);
+  }
+  @if $type == bg {
+    background-color: transd($color, $percentage);
+    background-color: rgba($color, $percentage);
+  }
+}
+@mixin circle {
+  @include border-radius(50%);
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=($opacity * 100));
+}
+@mixin absolutecenter($axis: "both"){
+  position:absolute;
+  @if $axis == "y"{
+    top:50%;
+    @include translateY(-50%);
+  }
+  @if $axis == "x"{
+    left:50%;
+    @include translateX(-50%);
+  }
+  @if $axis == "both"{
+    top:50%;
+    left:50%;
+    @include translate(-50%,-50%);
+  }
+}
+@mixin ctr($args...) {
+  @include absolutecenter($args...);
+}
+@mixin unabsolutecenter() {
+  position: inherit;
+  top: inherit;
+  left: inherit;
+  @include translate(0,0);
+}
+@mixin unctr($args...) {
+  @include unabsolutecenter($args...);
+}
+@mixin triangle($direction, $size: 0.375rem, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+@mixin cf() {
+  *zoom: 1;
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* Buttons */
+
+@mixin button($fontsize, $bgcolor, $fontcolor, $padding) {
+  background: $bgcolor;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  @include secondaryfont();
+  @include rem(font-size, $fontsize);
+  @include rem(line-height, $fontsize);
+  color: $fontcolor;
+  @include rem(padding, $padding);
+  @include transition-duration($transitionduration);
+  &:hover {
+    background: lighten($bgcolor, 6%);
+    color: $fontcolor;
+    text-decoration: none;
+  }
+  &:active {
+    @include box-shadow(inset 0 0 0.375rem rgba(0,0,0,.5));
+    outline: none;
+  }
+  &:visited {
+    color: $fontcolor;
+  }
+  @include bp(md) {
+    display: block;
+    width: 100%;
+  }
+}
+@mixin ghostbutton($fontsize, $bordercolor, $spacing) {
+  border: 1px solid $bordercolor;
+  @include border-radius($borderradius);
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  @include secondaryfont();
+  @include rem(font-size, $fontsize);
+  @include rem(line-height, $fontsize);
+  color: $bordercolor;
+  @include rem(padding, $spacing);
+  @include transition-duration($transitionduration);
+  &:hover {
+    background: $bordercolor;
+    color: #fff;
+    text-decoration: none;
+  }
+  &:active {
+    @include box-shadow(inset 0 0 0.375rem rgba(0,0,0,.5));
+    outline: none;
+  }
+  &:visited {
+    color: #fff;
+  }
+  @include bp(md) {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Fonts */
+
+@mixin primaryfont() { font-family: arial, helvetica, sans-serif; }
+@mixin secondaryfont() { font-family: georgia, times, serif; }
+
+/* Breakpoints */
+
+@mixin bp($point) {
+  @if $point == xl { // 1050px
+    @media (max-width: 65.625rem) { @content; }
+  }
+  @else if $point == lg { // 900px
+    @media (max-width: 56.25rem) { @content; }
+  }
+  @else if $point == md { // 768px
+    @media (max-width: 48rem)  { @content; }
+  }
+  @else if $point == sm { // 600px
+    @media (max-width: 37.5rem)  { @content; }
+  }
+  @else if $point == xs { // 400px
+    @media (max-width: 25rem)  { @content; }
+  }
+}
