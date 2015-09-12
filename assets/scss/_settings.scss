@@ -87,12 +87,23 @@ $maxwidth-xl: $maxwidth * 1.4;
    Mixins
    ========================================================================== */ 
 
+@function _true-is-equal($one, $two) {
+  @if type-of($one) == number and type-of($two) == number {
+    @if unit($one) == unit($two) {
+      @return $one == $two;
+    } @else {
+      @return false;
+    }
+  } @else {
+    @return $one == $two;
+  }
+}
 @mixin rem($property, $values) {
   $font-size: $base-font-size;
   $px-values: ();
   $rem-values: ();
   @each $value in $values {
-    @if $value == 0 or $value == 0px {
+    @if _true-is-equal($value, 0) {
       $px-values: join($px-values, 0);
       $rem-values: join($rem-values, 0);
     } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {

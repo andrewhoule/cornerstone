@@ -6,7 +6,7 @@ $(document).ready(function(){
    ========================================================================== */
 
 function stickyFooter() {
-  $('body').css('margin-bottom', $('.site-info').outerHeight());
+  $('body').css('margin-bottom', $('.site-info').outerHeight()); 
 }
 stickyFooter();
 didResize = false;
