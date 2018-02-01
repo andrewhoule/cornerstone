@@ -1,0 +1,64 @@
+
+/* Reset Stuff */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Border Box for all */
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+/* Vanity Styles */
+
+::selection {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Base List Styles */
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+
+  > li {
+    list-style: none;
+  }
+}
+
+/* Embeds */
+
+object,
+embed {
+  height: 100%;
+}
+
+/* Base Image Styles / SS Image Styles */
+
+img {
+  display: block;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+}
+
+/* Buttons */
+
+button {
+  background-color: transparent;
+  border: 0;
+}

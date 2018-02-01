@@ -1,0 +1,36 @@
+
+/* Typography Classes */
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.reversed-color {
+  color: #fff;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.all-caps {
+  text-transform: uppercase;
+}
+
+/* Hide / Show Class */
+
+.hide {
+  display: none;
+}

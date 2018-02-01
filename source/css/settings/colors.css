@@ -1,0 +1,38 @@
+
+:root {
+  --text-color: #555;
+  --text-color-subtle: color(var(--text-color) tint(30%));
+  --text-color-medsubtle: color(var(--text-color) tint(60%));
+  --text-color-verysubtle: color(var(--text-color) tint(90%));
+  --text-color-strong: color(var(--text-color) shade(30%));
+  --text-color-medstrong: color(var(--text-color) shade(60%));
+  --text-color-verystrong: color(var(--text-color) shade(90%));
+  --primary-color: #4f2683;
+  --primary-color-dark: color(var(--primary-color) shade(30%));
+  --primary-color-meddark: color(var(--primary-color) shade(60%));
+  --primary-color-verydark: color(var(--primary-color) shade(90%));
+  --primary-color-light: color(var(--primary-color) tint(10%));
+  --primary-color-medlight: color(var(--primary-color) tint(35%));
+  --primary-color-verylight: color(var(--primary-color) tint(60%));
+  --secondary-color: #f54c01;
+  --secondary-color-dark: color(var(--secondary-color) shade(30%));
+  --secondary-color-meddark: color(var(--secondary-color) shade(60%));
+  --secondary-color-verydark: color(var(--secondary-color) shade(90%));
+  --secondary-color-light: color(var(--secondary-color) tint(30%));
+  --secondary-color-medlight: color(var(--secondary-color) tint(60%));
+  --secondary-color-verylight: color(var(--secondary-color) tint(90%));
+  --offset-color: #ccc;
+  --offset-color-subtle: color(var(--offset-color) tint(30%));
+  --offset-color-medsubtle: color(var(--offset-color) tint(60%));
+  --offset-color-verysubtle: color(var(--offset-color) tint(90%));
+  --offset-color-strong: color(var(--offset-color) shade(20%));
+  --offset-color-medstrong: color(var(--offset-color) shade(40%));
+  --offset-color-verystrong: color(var(--offset-color) shade(60%));
+  --dark-color: #222;
+  --dark-color-light: color(var(--dark-color) tint(20%));
+  --dark-color-medlight: color(var(--dark-color) tint(40%));
+  --dark-color-verylight: color(var(--dark-color) tint(60%));
+  --dark-color-dark: color(var(--dark-color) shade(20%));
+  --dark-color-meddark: color(var(--dark-color) shade(40%));
+  --dark-color-verydark: color(var(--dark-color) shade(60%));
+}
