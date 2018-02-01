@@ -1,19 +1,14 @@
-Barebones Static Responsive HTML5/SCSS/jQuery Theme
+Barebones Starter Kit Using Webpack
 ====================
 
 ## Author
 * Andrew Houle
-* http://andyhoule.com
+* https://andrewhoule.me
 
 ## About
-This is a bare essentials HTML5/SCSS/jQuery responsive base. It's meant as a starter kit, not a full fledged website.
-
-## Giving Credit Where It's Due
-* Normalize CSS - http://necolas.github.com/normalize.css/
-* Respond JS - https://github.com/scottjehl/Respond
-* Jeet - http://jeet.gs/
+This is a barebones starter kit for using webpack for bundling, with Babel for modern JS, and PostCSS/CSSNext for modern CSS.
 
 ## Installation
 * Download to your local server.
-* Setup Bower (http://bower.io/) for frontend dependencies. Update bower.json and run 'bower init' at the command line of your site's path.
-* Setup Grunt (http://gruntjs.com/) for tasks. Update Gruntfile.js and package.json then run 'npm install' at the command line of your site's path. Run 'grunt' to start watching for changes to scss and js.
+* Have Node & NPM installed for frontend dependencies. Update package.json and run 'npm install' at the command line of your site's path.
+* Update webpack.config.babel.js browsersync portion to point to your local domain. Then run 'npm start' on the command line to start listening for updates and to run your local server.
