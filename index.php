@@ -16,7 +16,7 @@
   <meta name="twitter:url" content="">
   <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
   <!-- CSS -->
-  <link rel="stylesheet" href="build/bundle.cs">
+  <link rel="stylesheet" href="build/bundle.css">
   <!-- Icons -->
   <link rel="shortcut icon" href="favicon.ico">
 </head>
